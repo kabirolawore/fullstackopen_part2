@@ -34,6 +34,7 @@ const App = () => {
         handleValue={newSearch}
         handleChange={handleNoteChange.setSearch}
       />
+
       <Countries searchFunc={handleSearch} countries={countries} />
     </div>
   );

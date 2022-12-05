@@ -26,8 +26,6 @@ const App = () => {
     );
   };
 
-  // console.log(handleSearch());
-
   return (
     <div>
       <Filter

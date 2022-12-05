@@ -1,15 +1,10 @@
-// import Note from "./Note";
-
 const CountryData = ({ country }) => {
-  console.log(country);
+  // console.log(country);
 
   const countryName = country.name.common;
   const capital = country.capital[0];
   const area = country.area;
   const languages = Object.values(country.languages);
-  console.log(languages);
-  // console.log(countryName, capital);
-  // console.log(countryInfo);
 
   return (
     <div>
@@ -26,7 +21,7 @@ const CountryData = ({ country }) => {
           ))}
         </ul>
       </div>
-      <img src={country.flags.png} alt={"flag"} />
+      <img src={country.flags.png} alt="flag" />
     </div>
   );
 };
