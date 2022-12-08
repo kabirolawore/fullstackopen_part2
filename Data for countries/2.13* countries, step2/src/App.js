@@ -13,10 +13,8 @@ const App = () => {
       .then((response) => setCountries(response.data));
   }, []);
 
-  const handleNoteChange = {
-    setSearch(event) {
-      setNewSearch(event.target.value);
-    },
+  const handleNoteChange = (event) => {
+    setNewSearch(event.target.value);
   };
 
   const handleSearch = () => {
@@ -26,15 +24,9 @@ const App = () => {
     );
   };
 
-  // console.log(handleSearch());
-
   return (
     <div>
-      <Filter
-        handleValue={newSearch}
-        handleChange={handleNoteChange.setSearch}
-      />
-
+      <Filter handleValue={newSearch} handleChange={handleNoteChange} />
       <Countries searchFunc={handleSearch} countries={countries} />
     </div>
   );

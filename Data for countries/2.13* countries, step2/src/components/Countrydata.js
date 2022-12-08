@@ -1,5 +1,5 @@
 const CountryData = ({ country }) => {
-  // console.log(country);
+  //
 
   const countryName = country.name.common;
   const capital = country.capital[0];
@@ -16,8 +16,8 @@ const CountryData = ({ country }) => {
       <div>
         <h3>languages:</h3>
         <ul>
-          {languages.map((language, index) => (
-            <li key={index + 1}>{language}</li>
+          {languages.map((language) => (
+            <li key={language}>{language}</li>
           ))}
         </ul>
       </div>
