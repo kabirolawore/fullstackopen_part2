@@ -17,6 +17,7 @@ const App = () => {
       .then((response) => setPersons(response.data));
   }, []);
 
+  //
   const addNote = (event) => {
     event.preventDefault();
 
@@ -25,15 +26,23 @@ const App = () => {
         ? alert(`${newName} is already added to phonebook`)
         : newName,
       number: newNumber,
-      id: persons.length + 1,
+      // id: persons.length + 1,
     };
 
-    if (phonebookObject.name) setPersons(persons.concat(phonebookObject));
+    if (phonebookObject.name) {
+      axios
+        .post("http://localhost:3001/persons", phonebookObject)
+        .then((response) => {
+          console.log(response);
+          setPersons(persons.concat(phonebookObject));
+        });
+    }
 
     setNewName("");
     setNewNumber("");
   };
 
+  //
   const handleNoteChange = {
     setName(event) {
       setNewName(event.target.value);
@@ -46,6 +55,7 @@ const App = () => {
     },
   };
 
+  //
   const handleSearch = () => {
     // gets input and compare with persons array
     return persons.filter((person) =>
