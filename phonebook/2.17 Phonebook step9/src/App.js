@@ -49,8 +49,18 @@ const App = () => {
     },
   };
 
+  const handleDelete = (id, name) => {
+    const isConfirm = window.confirm(`Delete ${name} ?`);
+
+    if (isConfirm) {
+      personService.remove(id).then(() => {
+        setPersons(persons.filter((person) => person.id !== id));
+      });
+    }
+  };
+
   //
-  const handleSearch = () => {
+  const searchFilter = () => {
     // gets input and compare with persons array
     return persons.filter((person) =>
       person.name.toLowerCase().includes(newSearch.toLowerCase())
@@ -73,7 +83,13 @@ const App = () => {
         noteChangeNum={handleNoteChange.setNumber}
       />
       <h3>Numbers</h3>
-      <Person searchFunc={handleSearch} />
+      {searchFilter().map((person) => (
+        <Person
+          key={person.name}
+          person={person}
+          clickDelete={() => handleDelete(person.id, person.name)}
+        />
+      ))}
     </div>
   );
 };
